@@ -23,7 +23,7 @@ eyebrows, and small highlights. Lots of whitespace and breathing room.
 |------|---------|
 | `index.html` | All page content and structure (semantic HTML). |
 | `styles.css` | Luxury-boutique theme (white + charcoal + orange), layout, animations, responsive rules. |
-| `script.js` | Mobile nav, scroll reveals, counters, hero "How can we help" bar, testimonials carousel, form validation + `mailto:`. |
+| `script.js` | The editable **LISTINGS** array (top of file) plus mobile nav, scroll reveals, counters, hero "How can we help" bar, listings render, testimonials carousel, form validation + `mailto:`. |
 | `README.md` | This file. |
 
 Only external dependency: **Google Fonts** (`Cormorant Garamond` + `Manrope`) loaded via `<link>`.
@@ -67,6 +67,38 @@ Every spot that needs real data is flagged in the HTML with an
 - **Testimonials** — the four carousel quotes are clearly-labelled placeholders (each flagged
   `<!-- REPLACE: real client testimonial -->`). Swap for real client quotes + names when available.
 - **Open Graph** — add an `og:image` once a real photo exists (`og:url` is already the live domain).
+
+### Featured Listings — how to add a property (no HTML needed)
+
+The **Listings** section (nav link "Listings", `id="listings"`) shows homes **for sale and for
+rent**. It is data-driven: you edit **one array** and the cards build themselves.
+
+1. Open `script.js`.
+2. At the very **top of the file** you'll see the big `★ PROPERTY LISTINGS — EDIT HERE ★`
+   comment and a `var LISTINGS = [ ... ];` list (the file ships with **3 clearly-labelled
+   sample listings** to replace).
+3. To **add** a listing: copy one existing `{ ... }` block, paste it inside the `[ ]`,
+   and change the fields. To **remove** one, delete its `{ ... }` block. Save the file.
+
+Each listing has these fields (text in `"quotes"`, numbers without):
+
+| Field | Example | Notes |
+|-------|---------|-------|
+| `id` | `"mls-12345"` | any unique short text |
+| `status` | `"For Sale"` | must be `"For Sale"`, `"For Rent"`, `"Pending"`, or `"Sold"` |
+| `price` | `"$450,000"` or `"$2,400/mo"` | free text |
+| `address` | `"123 Palm Avenue"` | street |
+| `city` | `"Pinellas Park, FL"` | |
+| `beds` / `baths` / `sqft` | `3` / `2` / `1450` | numbers (commas added automatically) |
+| `blurb` | `"Updated block home…"` | one short sentence, or `""` to hide |
+| `featured` | `true` / `false` | `true` adds a "Featured" tag + accent border |
+| `link` | `"https://…"` | link to an MLS/details page, or `""` for no link (card stays static, no dead link) |
+| `photo` | `""` | leave empty for the elegant placeholder; or a real image URL. Prefer your **own hosted** image — don't hotlink someone else's. |
+
+- **Status badges are color-coded** (For Sale = orange, For Rent = teal, Pending = amber,
+  Sold = gray) **and** always show the text, so meaning is never color-only.
+- **Empty state:** if you make the list empty (`var LISTINGS = [];`), the section shows a
+  tasteful "New listings coming soon — call (727) 755-1662" card instead of a blank grid.
 
 Phone `(727) 755-1662` and email `heath@buyfloridaestate.com` are the real business details and
 are already wired into the hero, contact section, form (`mailto:`), and footer — no flags needed.
@@ -135,8 +167,9 @@ npx vercel --prod # promote to production
 - **Type:** `Cormorant Garamond` (elegant display serif) for large headings, `Manrope`
   for body/UI.
 - **Page rhythm:** full-bleed hero with a "How can we help?" selector bar → value-proposition
-  band → three services as alternating image-text rows → "Why Revive" grid → charcoal
-  stats/social-proof band → testimonials carousel → contact + form → multi-column footer.
+  band → three services as alternating image-text rows → "Why Revive" grid → **Featured
+  Listings** grid (for sale + for rent, data-driven) → charcoal stats/social-proof band →
+  testimonials carousel → contact + form → multi-column footer.
 - **Signature elements:** the hero **How can we help** bar (dropdown → "Get started" scrolls to
   the contact form and pre-selects the chosen service) and the **testimonials carousel**.
 - **Performance:** no framework, deferred script, CSS transitions, `IntersectionObserver`

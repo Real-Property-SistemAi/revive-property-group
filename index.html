@@ -48,6 +48,7 @@
           <li><a href="#management">Manage</a></li>
           <li><a href="#selling">Sell</a></li>
           <li><a href="#buying">Buy</a></li>
+          <li><a href="#listings">Listings</a></li>
           <li><a href="#why">Why Revive</a></li>
           <li><a href="#testimonials">Reviews</a></li>
           <li><a class="nav-cta" href="#contact">Get in touch</a></li>
@@ -325,6 +326,29 @@
             <p>From rent rolls to closings, the whole engagement points at one thing: your outcome.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURED LISTINGS ===================== -->
+    <!-- To add/edit/remove properties, edit the LISTINGS array at the TOP of script.js.
+         Cards below are injected by script.js — do not hand-write cards here. -->
+    <section class="section listings" id="listings" aria-labelledby="listings-title">
+      <div class="container">
+        <div class="section-head center reveal" data-reveal>
+          <p class="eyebrow eyebrow--dark eyebrow--center">
+            <span class="eyebrow-line" aria-hidden="true"></span>
+            Featured Listings
+          </p>
+          <h2 id="listings-title">Homes for sale and for rent across Tampa Bay</h2>
+          <p class="section-lead">
+            A hand-picked look at current opportunities from Revive Property Group. Updated as new
+            properties come to market.
+          </p>
+          <p class="listings-note">Showing both <strong>homes for sale</strong> and <strong>rentals</strong>.</p>
+        </div>
+
+        <!-- script.js renders listing cards (or a graceful empty state) into this container -->
+        <div class="listings-grid reveal" data-reveal id="listings-grid"></div>
       </div>
     </section>
 

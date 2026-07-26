@@ -1,7 +1,84 @@
+/* ============================================================================
+   ★ PROPERTY LISTINGS — EDIT HERE (and ONLY here) ★
+   ----------------------------------------------------------------------------
+   This is the ONE place to add, remove, or update listings. No HTML needed.
+
+   HOW TO ADD A LISTING:
+     1. Copy one of the example objects below (from "{" to "},").
+     2. Paste it inside the [ ] list, above or below the others.
+     3. Change the fields to the real property. Save the file. Done.
+
+   FIELDS (all text goes inside "quotes"; numbers do NOT):
+     id       : any unique short text, e.g. "mls-12345"
+     status   : MUST be one of: "For Sale" | "For Rent" | "Pending" | "Sold"
+     price    : text, e.g. "$450,000"  or  "$2,400/mo"
+     address  : street address, e.g. "123 Palm Avenue"
+     city     : e.g. "Pinellas Park, FL"
+     beds     : number, e.g. 3
+     baths    : number, e.g. 2
+     sqft     : number, e.g. 1450   (commas are added automatically)
+     blurb    : one short sentence (optional — set to "" to hide)
+     featured : true or false (optional — true adds a "Featured" tag + accent border)
+     link     : URL to an MLS / details page (optional — leave "" for no link)
+     photo    : leave "" to show the elegant placeholder. To use a real photo,
+                put an image URL here. TIP: prefer your own hosted image; do not
+                rely on hotlinking someone else's image.
+
+   To temporarily show the "coming soon" empty state, make this an empty list: []
+   ========================================================================== */
+var LISTINGS = [
+  // --- SAMPLE 1 (replace with a real listing) -------------------------------
+  {
+    id: "sample-1",
+    status: "For Sale",
+    price: "$439,900",
+    address: "7412 58th Way N",
+    city: "Pinellas Park, FL",
+    beds: 3,
+    baths: 2,
+    sqft: 1548,
+    blurb: "Updated block home with a split floor plan, two-car garage, and a fenced backyard.",
+    featured: true,
+    link: "",
+    photo: ""
+  },
+  // --- SAMPLE 2 (replace with a real listing) -------------------------------
+  {
+    id: "sample-2",
+    status: "For Sale",
+    price: "$319,000",
+    address: "4905 82nd Ave N",
+    city: "Pinellas Park, FL",
+    beds: 2,
+    baths: 1,
+    sqft: 1024,
+    blurb: "Move-in-ready starter home minutes from Tampa Bay beaches and US-19.",
+    featured: false,
+    link: "",
+    photo: ""
+  },
+  // --- SAMPLE 3 (replace with a real listing) -------------------------------
+  {
+    id: "sample-3",
+    status: "For Rent",
+    price: "$2,250/mo",
+    address: "3120 68th Street N",
+    city: "St. Petersburg, FL",
+    beds: 3,
+    baths: 2,
+    sqft: 1340,
+    blurb: "Bright rental with a screened lanai — professionally managed by Revive.",
+    featured: false,
+    link: "",
+    photo: ""
+  }
+  // --- Add more listings below this line, following the same pattern --------
+];
+
 /* =========================================================
    Revive Property Group — Services Site
    Vanilla JS: nav, reveal, counters, help-bar, carousel,
-   form validation + mailto. No dependencies. No secrets.
+   listings render, form validation + mailto. No dependencies. No secrets.
    ========================================================= */
 (function () {
   "use strict";
@@ -81,6 +158,114 @@
   } else {
     counters.forEach(function (el) { el.textContent = el.getAttribute("data-count"); });
   }
+
+  /* ---------- Property listings render (data-driven from LISTINGS) ---------- */
+  (function initListings() {
+    var grid = document.getElementById("listings-grid");
+    if (!grid) return;
+
+    var list = (typeof LISTINGS !== "undefined" && Array.isArray(LISTINGS)) ? LISTINGS : [];
+
+    // Escape any text before it touches the DOM as HTML.
+    function esc(v) {
+      return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+    function num(v) {
+      var n = Number(v);
+      return isFinite(n) ? n.toLocaleString("en-US") : esc(v);
+    }
+
+    // Map a status to a badge modifier class. Unknown statuses fall back to "sale".
+    var STATUS_CLASS = {
+      "For Sale": "sale",
+      "For Rent": "rent",
+      "Pending": "pending",
+      "Sold": "sold"
+    };
+
+    var ICON = {
+      bed: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9v9M22 18v-4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2M2 14h20"/><path d="M6 12V8a2 2 0 0 1 2-2h3v6"/></svg>',
+      bath: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12V6a2 2 0 0 1 4 0M3 12h18v2a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5zM7 19l-1.5 2M17 19l1.5 2"/></svg>',
+      sqft: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 15v5h-5M20 9V4h-5M4 15v5h5"/></svg>',
+      star: '<svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="m12 3 2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>',
+      home: '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/></svg>'
+    };
+
+    // Empty state — tasteful "coming soon" instead of an empty grid.
+    if (!list.length) {
+      grid.classList.add("is-empty");
+      grid.innerHTML =
+        '<div class="listings-empty">' +
+          '<span class="listings-empty-icon">' + ICON.home + '</span>' +
+          '<h3>New listings coming soon</h3>' +
+          '<p>We are lining up our next homes for sale and rentals. Call to be the first to know.</p>' +
+          '<a class="btn btn-primary" href="tel:+17277551662">Call (727) 755-1662</a>' +
+        '</div>';
+      return;
+    }
+
+    var html = list.map(function (item) {
+      item = item || {};
+      var statusText = esc(item.status || "For Sale");
+      var statusClass = STATUS_CLASS[item.status] || "sale";
+      var hasPhoto = typeof item.photo === "string" && item.photo.trim() !== "";
+      var hasLink = typeof item.link === "string" && item.link.trim() !== "";
+      var isFeatured = item.featured === true;
+
+      var mediaStyle = hasPhoto
+        ? ' style="background-image:url(\'' + esc(item.photo.trim()) + '\')"'
+        : "";
+      var photoTag = hasPhoto ? "" : '<span class="listing-photo-tag">Photo</span>';
+      var featuredTag = isFeatured
+        ? '<span class="listing-featured-tag">' + ICON.star + ' Featured</span>'
+        : "";
+
+      // Quick stats — labels are visible text (never color-only meaning).
+      var stats = [
+        '<span class="listing-stat">' + ICON.bed + ' <b>' + num(item.beds) + '</b> beds</span>',
+        '<span class="listing-stat-sep" aria-hidden="true">&middot;</span>',
+        '<span class="listing-stat">' + ICON.bath + ' <b>' + num(item.baths) + '</b> baths</span>',
+        '<span class="listing-stat-sep" aria-hidden="true">&middot;</span>',
+        '<span class="listing-stat">' + ICON.sqft + ' <b>' + num(item.sqft) + '</b> sqft</span>'
+      ].join("");
+
+      var blurb = (item.blurb && String(item.blurb).trim() !== "")
+        ? '<p class="listing-blurb">' + esc(item.blurb) + '</p>'
+        : "";
+
+      var addressLabel = esc(item.address || "") + ", " + esc(item.city || "");
+      var link = hasLink
+        ? '<a class="listing-link" href="' + esc(item.link.trim()) + '" rel="noopener"' +
+          ' aria-label="View details for ' + addressLabel + '">View details <span aria-hidden="true">&rarr;</span></a>'
+        : "";
+
+      var cardClass = "listing-card" +
+        (hasLink ? " listing-card--link" : "") +
+        (isFeatured ? " listing-card--featured" : "");
+
+      return '' +
+        '<article class="' + cardClass + '">' +
+          '<div class="listing-media' + (hasPhoto ? " listing-media--photo" : "") + '">' +
+            '<span class="listing-media-img"' + mediaStyle + '></span>' +
+            '<span class="listing-badge listing-badge--' + statusClass + '">' + statusText + '</span>' +
+            featuredTag +
+            photoTag +
+          '</div>' +
+          '<div class="listing-body">' +
+            '<p class="listing-price">' + esc(item.price || "") + '</p>' +
+            '<h3 class="listing-address">' + esc(item.address || "") +
+              '<span class="listing-city">' + esc(item.city || "") + '</span></h3>' +
+            '<div class="listing-stats">' + stats + '</div>' +
+            blurb +
+            link +
+          '</div>' +
+        '</article>';
+    }).join("");
+
+    grid.innerHTML = html;
+  })();
 
   /* ---------- Shared helper: preselect service + scroll to contact ---------- */
   var serviceSelect = document.getElementById("service");
