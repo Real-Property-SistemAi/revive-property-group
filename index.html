@@ -48,7 +48,8 @@
           <li><a href="#management">Manage</a></li>
           <li><a href="#selling">Sell</a></li>
           <li><a href="#buying">Buy</a></li>
-          <li><a href="#listings">Listings</a></li>
+          <li><a href="#listings">For Sale</a></li>
+          <li><a href="#rentals">Rentals</a></li>
           <li><a href="#why">Why Revive</a></li>
           <li><a href="#testimonials">Reviews</a></li>
           <li><a class="nav-cta" href="#contact">Get in touch</a></li>
@@ -339,16 +340,39 @@
             <span class="eyebrow-line" aria-hidden="true"></span>
             Featured Listings
           </p>
-          <h2 id="listings-title">Homes for sale and for rent across Tampa Bay</h2>
+          <h2 id="listings-title">Featured homes for sale across Tampa Bay</h2>
           <p class="section-lead">
-            A hand-picked look at current opportunities from Revive Property Group. Updated as new
+            A hand-picked look at current sale opportunities from Revive Property Group. Updated as new
             properties come to market.
           </p>
-          <p class="listings-note">Showing both <strong>homes for sale</strong> and <strong>rentals</strong>.</p>
+          <p class="listings-note">Looking to rent? See our <a href="#rentals">available rentals</a> below.</p>
         </div>
 
         <!-- script.js renders listing cards (or a graceful empty state) into this container -->
         <div class="listings-grid reveal" data-reveal id="listings-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===================== AVAILABLE RENTALS (live via TenantTurner) ===================== -->
+    <section class="section rentals" id="rentals" aria-labelledby="rentals-title">
+      <div class="container">
+        <div class="section-head center reveal" data-reveal>
+          <p class="eyebrow eyebrow--dark eyebrow--center">
+            <span class="eyebrow-line" aria-hidden="true"></span>
+            Available Rentals
+          </p>
+          <h2 id="rentals-title">Homes for rent &mdash; available now</h2>
+          <p class="section-lead">
+            Our current rental availability, updated live. See one you like? Schedule a showing right
+            from the listing, or call <a href="tel:+17277551662">(727) 755-1662</a>.
+          </p>
+        </div>
+
+        <!-- Live rentals via TenantTurner Listings Widget (managed in TenantTurner, customer_id 27974 — updates here automatically). Not a secret; public embed id. -->
+        <div class="tt-widget-wrap reveal" data-reveal>
+          <noscript>Please enable JavaScript to view current rentals, or call (727) 755-1662 for availability.</noscript>
+          <!-- Tenant Turner widget --><script id="ttWidget" type="text/javascript">try {window.tenantTurnerListingsWidget = { connection: { customer_id: 27974, user_id: null },environment: { root_path: "https://app.tenantturner.com" },tracking: {},options: { appearance__theme_color: "d9662a", appearance__map_enabled: 0, appearance__map_height: "800", appearance__map_width: "100", appearance__map_view: "show_listings_first", appearance__application_enabled: 1, appearance__application_display_type: "link", appearance__waitlist_enabled: 1, appearance__description_enabled: 1, search__search_enabled: 1, search__default_value: "", filter__filter_enabled: 1, filter__city_default_value: "", filter__state_default_value: "", filter__property_type_default_value: "", filter__bedrooms_default_value: "", filter__baths_default_value: "", filter__pets_default_value: "", sort__sort_enabled: 1, sort__default_value: "Most Recent" }};} catch (err) { if (console) { console.warn("TT widget error: " + err); } }</script><script>try {(function () {var w = window;var tt = w.TenantTurner;if (typeof tt !== "function") {var d = document;function l() {var s = d.createElement("script");s.type = "text/javascript";s.async = true;s.src = (window.tenantTurnerListingsWidget.environment.root_path ? window.tenantTurnerListingsWidget.environment.root_path + "/widget/widget.js" : "https://app.tenantturner.com/widget/widget.js");var x = d.getElementById("ttWidget");x.parentNode.insertBefore(s, x);}if (w.attachEvent) {w.attachEvent("onload", l);} else {w.addEventListener("load", l, false);}}})()} catch (err) {if(console){console.log("TT widget error: " + err)}}</script><!-- end Tenant Turner widget -->
+        </div>
       </div>
     </section>
 

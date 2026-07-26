@@ -58,16 +58,18 @@ var LISTINGS = [
     photo: ""
   },
   // --- SAMPLE 3 (replace with a real listing) -------------------------------
+  //     Note: RENTALS now display live in the "Available Rentals" section via
+  //     the TenantTurner widget — keep this list for FOR-SALE / featured homes.
   {
     id: "sample-3",
-    status: "For Rent",
-    price: "$2,250/mo",
+    status: "For Sale",
+    price: "$525,000",
     address: "3120 68th Street N",
     city: "St. Petersburg, FL",
     beds: 3,
     baths: 2,
     sqft: 1340,
-    blurb: "Bright rental with a screened lanai — professionally managed by Revive.",
+    blurb: "Bright home with a screened lanai, minutes from downtown St. Pete.",
     featured: false,
     link: "",
     photo: ""

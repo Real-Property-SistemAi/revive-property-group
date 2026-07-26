@@ -345,6 +345,20 @@ h1, h2, h3, h4 {
 .why-item h3 { font-size: 1.35rem; font-weight: 600; margin-bottom: 8px; }
 .why-item p { font-size: 0.94rem; color: var(--ink-soft); margin: 0; line-height: 1.65; }
 
+/* ---------- Available Rentals (TenantTurner widget) ---------- */
+.rentals { background: var(--bg, #fff); }
+.tt-widget-wrap {
+  margin-top: 34px;
+  min-height: 320px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+.tt-widget-wrap img { max-width: 100%; height: auto; }
+@media (max-width: 600px) { .tt-widget-wrap { padding: 10px; } }
+
 /* ---------- Featured Listings ---------- */
 .listings { background: var(--cream); }
 .listings-note {
