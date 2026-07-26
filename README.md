@@ -1,7 +1,7 @@
-# Revive Property Group — Services Website
+# Revive Realty and Property Group — Services Website
 
 A luxury-boutique, mobile-first marketing site that showcases the three core services of
-Revive Property Group: **Property Management**, **Selling / Listing Homes**,
+Revive Realty and Property Group: **Property Management**, **Selling / Listing Homes**,
 and **Buyer Representation**. Built as a fast, self-contained static site — no build
 step, no backend, no dependencies to install.
 
@@ -10,7 +10,7 @@ soft-neutral backgrounds, near-black charcoal typography, an elegant serif for l
 display headings, and a single warm **orange** accent used for buttons, links, section
 eyebrows, and small highlights. Lots of whitespace and breathing room.
 
-- **Company:** Revive Property Group
+- **Company:** Revive Realty and Property Group
 - **Location:** Pinellas Park, FL (Tampa Bay area), serving Florida
 - **Domain:** revivepropertygroup.biz
 - **Contact:** heath@buyfloridaestate.com
