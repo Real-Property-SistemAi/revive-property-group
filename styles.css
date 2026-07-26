@@ -134,12 +134,13 @@ h1, h2, h3, h4 {
   transition: box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), background 0.3s var(--ease);
 }
 .site-header.scrolled { box-shadow: var(--shadow-sm); border-bottom-color: var(--line); background: rgba(255, 255, 255, 0.94); }
-.header-inner { display: flex; align-items: center; justify-content: space-between; height: 82px; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 132px; }
+@media (max-width: 600px) { .header-inner { height: 104px; } }
 
 .brand { display: inline-flex; align-items: center; gap: 13px; color: var(--ink); }
 /* Real logo image (assets/logo.png). Shown when present; hidden onerror -> fallback appears */
-.brand-logo { height: 64px; width: auto; display: block; }
-@media (max-width: 600px) { .brand-logo { height: 52px; } }
+.brand-logo { height: 128px; width: auto; display: block; }
+@media (max-width: 600px) { .brand-logo { height: 84px; } }
 /* SVG wordmark fallback (hidden by default; JS onerror flips to flex if logo.png missing) */
 #brand-fallback, #brand-fallback-footer { display: none; align-items: center; gap: 13px; }
 .brand-mark {
