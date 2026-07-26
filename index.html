@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Revive Property Group | Florida Real Estate, Exceptional Service</title>
-  <meta name="description" content="A boutique Florida real estate firm in Pinellas Park and Tampa Bay. Full-service property management, expert home selling, and dedicated buyer representation — one trusted, licensed partner." />
+  <title>Revive Property Group | Florida Real Estate &amp; Property Management</title>
+  <meta name="description" content="A boutique Florida real estate firm in Pinellas Park and Tampa Bay. Full-service property management, buying, selling, and investment services — one trusted, licensed partner." />
   <meta name="theme-color" content="#0E2340" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Revive Property Group | Florida Real Estate, Exceptional Service" />
-  <meta property="og:description" content="Boutique property management, selling, and buyer representation across Tampa Bay and Florida." />
+  <meta property="og:title" content="Revive Property Group | Florida Real Estate &amp; Property Management" />
+  <meta property="og:description" content="Boutique property management, buying, selling, and investment services across Tampa Bay and Florida." />
   <meta property="og:type" content="website" />
   <!-- Uses the brand logo for now; swap for a real photo when available -->
   <meta property="og:image" content="assets/logo.jpg" />
@@ -24,10 +24,10 @@
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <!-- ===================== HEADER ===================== -->
+  <!-- ===================== HEADER (shared across all pages) ===================== -->
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="Revive Property Group home">
+      <a class="brand" href="index.html" aria-label="Revive Property Group home">
         <!-- Real logo when present; hides itself and reveals the SVG wordmark if assets/logo.jpg is missing -->
         <img src="assets/logo.jpg" alt="Revive Property Group" class="brand-logo"
              onerror="this.style.display='none'; document.getElementById('brand-fallback').style.display='flex';" />
@@ -50,15 +50,19 @@
           <span></span><span></span><span></span>
         </button>
         <ul class="nav-menu" id="nav-menu">
-          <li><a href="#services">Services</a></li>
-          <li><a href="#management">Manage</a></li>
-          <li><a href="#selling">Sell</a></li>
-          <li><a href="#buying">Buy</a></li>
-          <li><a href="#listings">For Sale</a></li>
-          <li><a href="#rentals">Rentals</a></li>
-          <li><a href="#why">Why Revive</a></li>
-          <li><a href="#testimonials">Reviews</a></li>
-          <li><a class="nav-cta" href="#contact">Get in touch</a></li>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="property-management.html">Property Management</a></li>
+          <li><a href="buy-sell.html">Buy &amp; Sell</a></li>
+          <li><a href="investment.html">Investment</a></li>
+          <li><a href="index.html#rentals">Rentals</a></li>
+          <li><a href="index.html#why">Why Revive</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="nav-logins">
+            <!-- REPLACE: confirm exact TenantCloud owner portal URL -->
+            <a class="nav-login" href="https://app.tenantcloud.com/" target="_blank" rel="noopener">Owner Login</a>
+            <!-- REPLACE: confirm exact TenantCloud tenant portal URL -->
+            <a class="nav-login" href="https://app.tenantcloud.com/" target="_blank" rel="noopener">Tenant Login</a>
+          </li>
         </ul>
       </nav>
     </div>
@@ -79,13 +83,20 @@
           Pinellas Park &middot; Tampa Bay &middot; Florida
         </p>
         <h1 id="hero-title" class="hero-title reveal" data-reveal>
-          Exceptional Florida real estate,<br />
-          <span class="accent-italic">extraordinary service</span>
+          Protecting your investment.<br />
+          <span class="accent-italic">Maximizing your returns.</span>
         </h1>
         <p class="hero-sub reveal" data-reveal>
-          A boutique firm for owners, sellers, and buyers across Tampa Bay. Whatever your
-          move, you get one trusted, licensed partner from the first conversation to closing.
+          A boutique Florida real estate firm for owners, buyers, sellers, and investors across
+          Tampa Bay. Whatever your move, you get one trusted, licensed partner from the first
+          conversation to closing &mdash; and long after.
         </p>
+
+        <div class="hero-ctas reveal" data-reveal>
+          <a class="btn btn-primary" href="contact.html?service=Property%20Management">Get a free rental analysis</a>
+          <a class="btn btn-outline" href="#rentals">Search homes</a>
+          <a class="btn btn-outline" href="contact.html">Request a consultation</a>
+        </div>
 
         <!-- How can we help? selector bar -->
         <form class="help-bar reveal" data-reveal id="help-bar" aria-label="How can we help you?">
@@ -96,6 +107,7 @@
                 <option value="Property Management">Manage my rental</option>
                 <option value="Selling my home">Sell my home</option>
                 <option value="Buying a home">Buy a home</option>
+                <option value="Investment">Invest in real estate</option>
               </select>
               <span class="select-arrow" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -112,190 +124,72 @@
       </div>
     </section>
 
-    <!-- ===================== VALUE PROPOSITION BAND ===================== -->
-    <section class="section value" id="services" aria-labelledby="value-title">
-      <div class="container value-inner">
-        <p class="eyebrow eyebrow--dark reveal" data-reveal>
-          <span class="eyebrow-line" aria-hidden="true"></span>
-          What we do
-        </p>
-        <h2 id="value-title" class="value-title reveal" data-reveal>
-          Exceptional homes, extraordinary service &mdash; across every chapter of your journey.
-        </h2>
-        <p class="value-lead reveal" data-reveal>
-          Real estate is rarely a single decision. It is a season of them. Revive Property Group focuses
-          on doing three things exceptionally well, so you always have the right guidance at the right time
-          &mdash; delivered with the care of a boutique firm and the depth of a full-service brokerage.
-        </p>
-        <div class="value-mini reveal" data-reveal>
-          <a class="value-chip" href="#management"><span>01</span> Property Management</a>
-          <a class="value-chip" href="#selling"><span>02</span> Selling &amp; Listing</a>
-          <a class="value-chip" href="#buying"><span>03</span> Helping Buyers Buy</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== SERVICE 1: PROPERTY MANAGEMENT ===================== -->
-    <section class="section service" id="management" aria-labelledby="mgmt-title">
-      <div class="container service-inner">
-        <div class="service-copy reveal" data-reveal>
-          <span class="service-index">Service 01</span>
-          <h2 id="mgmt-title">Property Management</h2>
-          <p class="service-tag">Full-service management for owners and landlords</p>
-          <p class="service-lead-p">
-            Owning a rental should build wealth, not consume your weekends. We handle the day-to-day so
-            your property performs, your tenants are cared for, and your income shows up on time &mdash; with
-            clear owner reporting and none of the operational headaches.
+    <!-- ===================== FOUR PILLARS ===================== -->
+    <section class="section pillars" id="services" aria-labelledby="pillars-title">
+      <div class="container">
+        <div class="section-head center reveal" data-reveal>
+          <p class="eyebrow eyebrow--dark eyebrow--center">
+            <span class="eyebrow-line" aria-hidden="true"></span>
+            What we do
           </p>
-
-          <h3 class="mini-head">What&rsquo;s included</h3>
-          <ul class="check-list">
-            <li>Tenant screening &mdash; credit, background, income and rental history</li>
-            <li>Rent collection &amp; owner disbursements with online payments</li>
-            <li>Maintenance coordination with vetted local vendors</li>
-            <li>Leasing &amp; showings to fill vacancies fast</li>
-            <li>Transparent owner reporting and statements</li>
-            <li>Lease prep, renewals and move-in / move-out inspections</li>
-          </ul>
-
-          <h3 class="mini-head">How it works</h3>
-          <ol class="step-list">
-            <li><strong>Property review</strong> &mdash; we assess your home and set a market-right rent.</li>
-            <li><strong>Market &amp; lease</strong> &mdash; we advertise, show, screen and place a qualified tenant.</li>
-            <li><strong>Manage &amp; report</strong> &mdash; we run collections, maintenance and reporting month to month.</li>
-          </ol>
-
-          <p class="service-for"><strong>Who it&rsquo;s for:</strong> owners of single homes, condos, or small portfolios who want reliable, hands-off income across Tampa Bay.</p>
-          <!-- REPLACE: TenantCloud + TenantTurner power our back office; keep vendor names out of public copy unless you want them shown -->
-
-          <div class="service-cta">
-            <a class="btn btn-primary" href="#contact" data-prefill="Property Management">Get a free rental analysis</a>
-            <a class="btn btn-text" href="#contact">Talk to us <span aria-hidden="true">&rarr;</span></a>
-          </div>
-        </div>
-
-        <div class="service-figure reveal" data-reveal>
-          <!-- REPLACE: real photo of a managed rental / property exterior -->
-          <div class="photo-frame" role="img" aria-label="A well-kept Florida rental home managed by Revive Property Group">
-            <span class="photo-tag">Photo &mdash; managed rental</span>
-            <div class="figure-badge">
-              <span class="fb-label">Owner statement</span>
-              <span class="fb-value">On time, every month</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== SERVICE 2: SELLING / LISTING ===================== -->
-    <section class="section service service--alt" id="selling" aria-labelledby="sell-title">
-      <div class="container service-inner reverse">
-        <div class="service-copy reveal" data-reveal>
-          <span class="service-index">Service 02</span>
-          <h2 id="sell-title">Selling &amp; Listing Your Home</h2>
-          <p class="service-tag">Seller representation that gets you top dollar</p>
-          <p class="service-lead-p">
-            Your home is likely your largest asset. We position it to command attention and price it with
-            real data, then market it hard and negotiate harder &mdash; so you walk away with the strongest
-            possible result and the fewest surprises.
+          <h2 id="pillars-title">Four ways we help you win in Florida real estate</h2>
+          <p class="section-lead">
+            Real estate is rarely a single decision &mdash; it is a season of them. Revive Property Group
+            brings four services under one roof, so you always have the right guidance at the right time.
           </p>
-
-          <h3 class="mini-head">What&rsquo;s included</h3>
-          <ul class="check-list">
-            <li>Comparative market analysis (CMA) &amp; strategic pricing</li>
-            <li>Listing on the MLS with maximum syndication</li>
-            <li>Professional-grade marketing &amp; property presentation</li>
-            <li>Buyer &amp; agent outreach across Tampa Bay</li>
-            <li>Skilled offer review and negotiation</li>
-            <li>Guidance through inspections, appraisal and closing</li>
-          </ul>
-
-          <h3 class="mini-head">How it works</h3>
-          <ol class="step-list">
-            <li><strong>Value &amp; strategy</strong> &mdash; we tour the home and deliver a data-backed price.</li>
-            <li><strong>Prep &amp; launch</strong> &mdash; we stage the story, list on the MLS and market widely.</li>
-            <li><strong>Negotiate &amp; close</strong> &mdash; we manage offers and shepherd you to the closing table.</li>
-          </ol>
-
-          <p class="service-for"><strong>Who it&rsquo;s for:</strong> homeowners, investors and landlords ready to sell a Florida property and maximize their net proceeds.</p>
-
-          <div class="service-cta">
-            <a class="btn btn-primary" href="#contact" data-prefill="Selling my home">Get your home&rsquo;s value</a>
-            <a class="btn btn-text" href="#contact">Talk to us <span aria-hidden="true">&rarr;</span></a>
-          </div>
         </div>
 
-        <div class="service-figure reveal" data-reveal>
-          <!-- REPLACE: real photo of a listed / staged home interior or exterior -->
-          <div class="photo-frame" role="img" aria-label="A beautifully presented Florida home listed by Revive Property Group">
-            <span class="photo-tag">Photo &mdash; listed home</span>
-            <div class="figure-badge">
-              <span class="fb-label">Marketing</span>
-              <span class="fb-value">On the MLS &amp; syndicated</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="pillars-grid reveal" data-reveal>
+          <article class="pillar-card">
+            <span class="pillar-index">01</span>
+            <span class="pillar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/></svg>
+            </span>
+            <h3>Property Management</h3>
+            <p>Full-service management for owners &mdash; screening, rent collection, maintenance, inspections, and transparent reporting.</p>
+            <a class="pillar-link" href="property-management.html">Explore management <span aria-hidden="true">&rarr;</span></a>
+          </article>
 
-    <!-- ===================== SERVICE 3: BUYING ===================== -->
-    <section class="section service" id="buying" aria-labelledby="buy-title">
-      <div class="container service-inner">
-        <div class="service-copy reveal" data-reveal>
-          <span class="service-index">Service 03</span>
-          <h2 id="buy-title">Helping Buyers Buy Their Home</h2>
-          <p class="service-tag">Buyer representation from search to keys</p>
-          <p class="service-lead-p">
-            Buying in Florida is exciting, and it moves fast. We put an experienced advocate in your corner
-            who knows the local market, protects your interests, and turns a stressful process into a clear,
-            confident path to the right home at the right price.
-          </p>
+          <article class="pillar-card">
+            <span class="pillar-index">02</span>
+            <span class="pillar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 7.5 12 3 3.5 7.5 12 12l8.5-4.5z"/><path d="M3.5 7.5V16L12 21l8.5-5V7.5"/><path d="M12 12v9"/></svg>
+            </span>
+            <h3>Buy &amp; Sell</h3>
+            <p>Expert buyer and seller representation &mdash; pricing, marketing, negotiation, and guidance from first showing to closing table.</p>
+            <a class="pillar-link" href="buy-sell.html">Buy or sell a home <span aria-hidden="true">&rarr;</span></a>
+          </article>
 
-          <h3 class="mini-head">What&rsquo;s included</h3>
-          <ul class="check-list">
-            <li>Needs &amp; budget consultation, plus lender connections</li>
-            <li>Curated home matches across your target areas</li>
-            <li>Private tours and honest, on-the-ground insight</li>
-            <li>Strong, well-structured offers written to win</li>
-            <li>Negotiation on price, terms and repairs</li>
-            <li>Hands-on guidance through inspection to closing</li>
-          </ul>
+          <article class="pillar-card">
+            <span class="pillar-index">03</span>
+            <span class="pillar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 6 4-14 2 6h4"/></svg>
+            </span>
+            <h3>Investment Services</h3>
+            <p>Build and grow a portfolio &mdash; ROI and cash-flow analysis, market reports, acquisition support, and free calculators.</p>
+            <a class="pillar-link" href="investment.html">Grow your portfolio <span aria-hidden="true">&rarr;</span></a>
+          </article>
 
-          <h3 class="mini-head">How it works</h3>
-          <ol class="step-list">
-            <li><strong>Discover</strong> &mdash; we learn your must-haves, budget and timeline.</li>
-            <li><strong>Search &amp; tour</strong> &mdash; we surface the right homes and see them with you.</li>
-            <li><strong>Offer &amp; close</strong> &mdash; we negotiate and guide you all the way to the keys.</li>
-          </ol>
-
-          <p class="service-for"><strong>Who it&rsquo;s for:</strong> first-time buyers, relocating families and investors looking for the right Florida home or opportunity.</p>
-
-          <div class="service-cta">
-            <a class="btn btn-primary" href="#contact" data-prefill="Buying a home">Start your home search</a>
-            <a class="btn btn-text" href="#contact">Talk to us <span aria-hidden="true">&rarr;</span></a>
-          </div>
-        </div>
-
-        <div class="service-figure reveal" data-reveal>
-          <!-- REPLACE: real photo of buyers touring / receiving keys to a new Florida home -->
-          <div class="photo-frame" role="img" aria-label="Happy buyers at their new Florida home found with Revive Property Group">
-            <span class="photo-tag">Photo &mdash; new home</span>
-            <div class="figure-badge">
-              <span class="fb-label">Your advocate</span>
-              <span class="fb-value">From search to keys</span>
-            </div>
-          </div>
+          <article class="pillar-card">
+            <span class="pillar-index">04</span>
+            <span class="pillar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="4"/><path d="m11 11 9 9M17 17l2-2M14 14l2-2"/></svg>
+            </span>
+            <h3>Available Rentals</h3>
+            <p>See our current rental availability, updated live. Find a home you love and schedule a showing right from the listing.</p>
+            <a class="pillar-link" href="#rentals">View available rentals <span aria-hidden="true">&rarr;</span></a>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ===================== WHY REVIVE ===================== -->
+    <!-- ===================== WHY CHOOSE REVIVE ===================== -->
     <section class="section why" id="why" aria-labelledby="why-title">
       <div class="container">
         <div class="section-head center reveal" data-reveal>
           <p class="eyebrow eyebrow--dark eyebrow--center">
             <span class="eyebrow-line" aria-hidden="true"></span>
-            Why Revive
+            Why Choose Revive
           </p>
           <h2 id="why-title">Local, licensed, and genuinely invested in your outcome</h2>
           <p class="section-lead">
@@ -304,59 +198,62 @@
           </p>
         </div>
 
-        <div class="why-grid">
-          <div class="why-item reveal" data-reveal>
+        <div class="why-grid reveal" data-reveal>
+          <div class="why-item">
             <span class="why-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
-            <h3>Licensed professional</h3>
-            <p>Real estate is regulated for a reason. You work with the licensed expert directly &mdash; no hand-offs.</p>
+            <h3>Thorough tenant screening</h3>
+            <p>Credit, background, income, and rental-history checks help place reliable, qualified residents in your property.</p>
           </div>
-          <div class="why-item reveal" data-reveal>
+          <div class="why-item">
             <span class="why-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+              <svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 7h3l2-2h6l2 2h3v12H4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
             </span>
-            <h3>Truly local</h3>
-            <p>Boots-on-the-ground knowledge of Pinellas Park and the wider Tampa Bay market.</p>
+            <h3>Professional photography</h3>
+            <p>Every listing is presented with professional-grade photography that helps homes lease and sell faster.</p>
           </div>
-          <div class="why-item reveal" data-reveal>
+          <div class="why-item">
+            <span class="why-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="24" height="24"><rect x="3" y="4" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 9h18M8 14h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <h3>Online owner portal</h3>
+            <p>Track statements, payments, and maintenance anytime through a secure online owner portal &mdash; full transparency, 24/7.</p>
+          </div>
+          <div class="why-item">
             <span class="why-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 4h16v12H5.2L4 17.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 9h8M8 12h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
             </span>
-            <h3>Clear communication</h3>
-            <p>Straight answers, steady updates, and no jargon. You always know where things stand.</p>
-          </div>
-          <div class="why-item reveal" data-reveal>
-            <span class="why-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="24" height="24"><path d="M3 12h4l2 6 4-14 2 6h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <h3>Results-focused</h3>
-            <p>From rent rolls to closings, the whole engagement points at one thing: your outcome.</p>
+            <h3>Transparent communication</h3>
+            <p>Straight answers, steady updates, and no jargon. You always know exactly where things stand.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===================== FEATURED LISTINGS ===================== -->
-    <!-- To add/edit/remove properties, edit the LISTINGS array at the TOP of script.js.
-         Cards below are injected by script.js — do not hand-write cards here. -->
-    <section class="section listings" id="listings" aria-labelledby="listings-title">
-      <div class="container">
-        <div class="section-head center reveal" data-reveal>
-          <p class="eyebrow eyebrow--dark eyebrow--center">
-            <span class="eyebrow-line" aria-hidden="true"></span>
-            Featured Listings
-          </p>
-          <h2 id="listings-title">Featured homes for sale across Tampa Bay</h2>
-          <p class="section-lead">
-            A hand-picked look at current sale opportunities from Revive Property Group. Updated as new
-            properties come to market.
-          </p>
-          <p class="listings-note">Looking to rent? See our <a href="#rentals">available rentals</a> below.</p>
+    <!-- ===================== STATS / SOCIAL PROOF BAND ===================== -->
+    <section class="stats" aria-label="Revive Property Group at a glance">
+      <div class="container stats-grid">
+        <div class="stat-item reveal" data-reveal>
+          <!-- REPLACE: confirm real figure -->
+          <span class="stat-num"><span data-count="98">98</span><span class="stat-suffix">%</span></span>
+          <span class="stat-label">Rent collected on time</span>
         </div>
-
-        <!-- script.js renders listing cards (or a graceful empty state) into this container -->
-        <div class="listings-grid reveal" data-reveal id="listings-grid"></div>
+        <div class="stat-item reveal" data-reveal>
+          <!-- REPLACE: confirm real figure -->
+          <span class="stat-num">&lt;<span data-count="20">20</span><span class="stat-suffix"> days</span></span>
+          <span class="stat-label">Average time to fill a vacancy</span>
+        </div>
+        <div class="stat-item reveal" data-reveal>
+          <!-- REPLACE: confirm real figure -->
+          <span class="stat-num"><span data-count="100">100</span><span class="stat-suffix">%</span></span>
+          <span class="stat-label">Licensed &amp; local to Tampa Bay</span>
+        </div>
+        <div class="stat-item reveal" data-reveal>
+          <!-- REPLACE: confirm real figure -->
+          <span class="stat-num"><span data-count="1">1</span></span>
+          <span class="stat-label">Direct line to your agent</span>
+        </div>
       </div>
     </section>
 
@@ -379,29 +276,6 @@
         <div class="tt-widget-wrap reveal" data-reveal>
           <noscript>Please enable JavaScript to view current rentals, or call (727) 755-1662 for availability.</noscript>
           <!-- Tenant Turner widget --><script id="ttWidget" type="text/javascript">try {window.tenantTurnerListingsWidget = { connection: { customer_id: 27974, user_id: null },environment: { root_path: "https://app.tenantturner.com" },tracking: {},options: { appearance__theme_color: "C6A24A", appearance__map_enabled: 0, appearance__map_height: "800", appearance__map_width: "100", appearance__map_view: "show_listings_first", appearance__application_enabled: 1, appearance__application_display_type: "link", appearance__waitlist_enabled: 1, appearance__description_enabled: 1, search__search_enabled: 1, search__default_value: "", filter__filter_enabled: 1, filter__city_default_value: "", filter__state_default_value: "", filter__property_type_default_value: "", filter__bedrooms_default_value: "", filter__baths_default_value: "", filter__pets_default_value: "", sort__sort_enabled: 1, sort__default_value: "Most Recent" }};} catch (err) { if (console) { console.warn("TT widget error: " + err); } }</script><script>try {(function () {var w = window;var tt = w.TenantTurner;if (typeof tt !== "function") {var d = document;function l() {var s = d.createElement("script");s.type = "text/javascript";s.async = true;s.src = (window.tenantTurnerListingsWidget.environment.root_path ? window.tenantTurnerListingsWidget.environment.root_path + "/widget/widget.js" : "https://app.tenantturner.com/widget/widget.js");var x = d.getElementById("ttWidget");x.parentNode.insertBefore(s, x);}if (w.attachEvent) {w.attachEvent("onload", l);} else {w.addEventListener("load", l, false);}}})()} catch (err) {if(console){console.log("TT widget error: " + err)}}</script><!-- end Tenant Turner widget -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== STATS / SOCIAL PROOF BAND ===================== -->
-    <section class="stats" aria-label="Revive Property Group at a glance">
-      <div class="container stats-grid">
-        <!-- REPLACE: confirm or update these figures with real numbers before publishing -->
-        <div class="stat-item reveal" data-reveal>
-          <span class="stat-num"><span data-count="100">100</span><span class="stat-suffix">%</span></span>
-          <span class="stat-label">Licensed &amp; local to Tampa Bay</span>
-        </div>
-        <div class="stat-item reveal" data-reveal>
-          <span class="stat-num"><span data-count="3">3</span></span>
-          <span class="stat-label">Core services, one partner</span>
-        </div>
-        <div class="stat-item reveal" data-reveal>
-          <span class="stat-num"><span data-count="24">24</span><span class="stat-suffix">/7</span></span>
-          <span class="stat-label">Owner &amp; tenant support tools</span>
-        </div>
-        <div class="stat-item reveal" data-reveal>
-          <span class="stat-num"><span data-count="1">1</span></span>
-          <span class="stat-label">Direct line to your agent</span>
         </div>
       </div>
     </section>
@@ -444,7 +318,7 @@
               <!-- REPLACE: real client testimonial -->
               <li class="testi-slide" role="group" aria-roledescription="slide" aria-label="4 of 4">
                 <blockquote>
-                  <p>&ldquo;One partner for the whole journey &mdash; managing my rentals today, and right there when I was ready to sell. That continuity is rare and it matters.&rdquo;</p>
+                  <p>&ldquo;One partner for the whole journey &mdash; managing my rentals today, and right there when I was ready to invest again. That continuity is rare and it matters.&rdquo;</p>
                   <footer><span class="testi-name">Placeholder Client</span><span class="testi-role">Investor &middot; Tampa Bay</span></footer>
                 </blockquote>
               </li>
@@ -468,102 +342,26 @@
       </div>
     </section>
 
-    <!-- ===================== CONTACT ===================== -->
-    <section class="section contact" id="contact" aria-labelledby="contact-title">
-      <div class="container contact-inner">
-        <div class="contact-copy reveal" data-reveal>
-          <p class="eyebrow eyebrow--dark">
-            <span class="eyebrow-line" aria-hidden="true"></span>
-            Get in touch
-          </p>
-          <h2 id="contact-title">Let&rsquo;s talk about your next move</h2>
-          <p class="section-lead">
-            Tell us what you need and you will hear back from us directly. A free consultation, no pressure.
-          </p>
-
-          <ul class="contact-details">
-            <li>
-              <span class="cd-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 5h16v14H4z" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m4 6 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <a href="mailto:heath@buyfloridaestate.com">heath@buyfloridaestate.com</a>
-            </li>
-            <li>
-              <span class="cd-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-              </span>
-              <a href="tel:+17277551662">(727) 755-1662</a>
-            </li>
-            <li>
-              <span class="cd-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
-              </span>
-              <address>9899 66th St N, Pinellas Park, FL 33782<br />Serving Tampa Bay &amp; Florida</address>
-            </li>
-          </ul>
-
-          <!-- REPLACE: social links hidden for now. Add real Facebook/Instagram/LinkedIn URLs here when ready. -->
-        </div>
-
-        <div class="contact-form-wrap reveal" data-reveal>
-          <!-- To connect a no-code endpoint later, set data-endpoint on this form (see README) -->
-          <form class="contact-form" id="contact-form" novalidate data-endpoint="">
-            <div class="field">
-              <label for="name">Full name</label>
-              <input type="text" id="name" name="name" autocomplete="name" required aria-required="true" />
-              <span class="field-error" data-error-for="name" role="alert"></span>
-            </div>
-
-            <div class="field-row">
-              <div class="field">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" />
-                <span class="field-error" data-error-for="email" role="alert"></span>
-              </div>
-              <div class="field">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" />
-                <span class="field-error" data-error-for="phone" role="alert"></span>
-              </div>
-            </div>
-
-            <div class="field">
-              <label for="service">I&rsquo;m interested in</label>
-              <div class="select-wrap">
-                <select id="service" name="service" required aria-required="true">
-                  <option value="" disabled selected>Choose a service&hellip;</option>
-                  <option value="Property Management">Property Management</option>
-                  <option value="Selling my home">Selling my home</option>
-                  <option value="Buying a home">Buying a home</option>
-                  <option value="Other">Other</option>
-                </select>
-                <span class="select-arrow" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="18" height="18"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-              </div>
-              <span class="field-error" data-error-for="service" role="alert"></span>
-            </div>
-
-            <div class="field">
-              <label for="message">How can we help?</label>
-              <textarea id="message" name="message" rows="4" required aria-required="true"></textarea>
-              <span class="field-error" data-error-for="message" role="alert"></span>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-block">Send message</button>
-            <p class="form-note" id="form-status" role="status" aria-live="polite"></p>
-            <p class="form-fineprint">By submitting, you agree to be contacted about your inquiry. We never share your information.</p>
-          </form>
+    <!-- ===================== CTA BAND ===================== -->
+    <section class="section cta-band" aria-labelledby="home-cta-title">
+      <div class="container">
+        <h2 id="home-cta-title" class="reveal" data-reveal>Let&rsquo;s talk about your next move</h2>
+        <p class="reveal" data-reveal>
+          Tell us what you need and you will hear back from us directly. A free consultation, no pressure.
+        </p>
+        <div class="cta-actions reveal" data-reveal>
+          <a class="btn btn-primary" href="contact.html">Request a consultation</a>
+          <a class="btn btn-outline" href="tel:+17277551662">Call (727) 755-1662</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ===================== FOOTER ===================== -->
+  <!-- ===================== FOOTER (shared across all pages) ===================== -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <a class="brand" href="#top" aria-label="Revive Property Group home">
+        <a class="brand" href="index.html" aria-label="Revive Property Group home">
           <!-- Footer uses the recolored wordmark (the logo has a white background, which would show as a box on the navy footer) -->
           <span class="brand-fallback" id="brand-fallback-footer" style="display:flex;">
             <span class="brand-mark" aria-hidden="true">
@@ -573,7 +371,7 @@
           </span>
         </a>
         <p class="brand-tagline">Manage &middot; Maintain &middot; Maximize</p>
-        <p class="footer-desc">A boutique Florida real estate firm &mdash; property management, selling, and buyer representation across Tampa Bay.</p>
+        <p class="footer-desc">A boutique Florida real estate firm &mdash; property management, buying, selling, and investment services across Tampa Bay.</p>
         <span class="eho" aria-label="Equal Housing Opportunity">
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3 3 10h2v9h14v-9h2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M10 19v-5h4v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
           Equal Housing Opportunity
@@ -584,17 +382,19 @@
         <div>
           <h4>Services</h4>
           <ul>
-            <li><a href="#management">Property Management</a></li>
-            <li><a href="#selling">Selling Your Home</a></li>
-            <li><a href="#buying">Buying a Home</a></li>
+            <li><a href="property-management.html">Property Management</a></li>
+            <li><a href="buy-sell.html">Buy &amp; Sell</a></li>
+            <li><a href="investment.html">Investment Services</a></li>
+            <li><a href="index.html#rentals">Available Rentals</a></li>
           </ul>
         </div>
         <div>
           <h4>Company</h4>
           <ul>
-            <li><a href="#why">Why Revive</a></li>
-            <li><a href="#testimonials">Reviews</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.html#why">Why Revive</a></li>
+            <li><a href="index.html#testimonials">Reviews</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://app.tenantcloud.com/" target="_blank" rel="noopener">Owner &amp; Tenant Login</a></li>
           </ul>
         </div>
         <div>
@@ -611,7 +411,7 @@
 
     <div class="container footer-bottom">
       <p>&copy; <span id="year">2026</span> Revive Property Group &middot; revivepropertygroup.biz &middot; All rights reserved.
-        <span class="license">FL License #SL3279668</span>
+        <span class="license">Thomas Heath Shewmaker &middot; FL License #SL3279668</span>
       </p>
       <p class="disclaimer">
         This website is for general marketing and informational purposes only and does not constitute legal,

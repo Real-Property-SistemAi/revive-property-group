@@ -288,12 +288,18 @@ var LISTINGS = [
   if (helpBar && helpSelect) {
     helpBar.addEventListener("submit", function (e) {
       e.preventDefault();
-      selectService(helpSelect.value);
-      goToContact();
-      window.setTimeout(function () {
-        var name = document.getElementById("name");
-        if (name) name.focus();
-      }, prefersReduced ? 0 : 500);
+      var svc = helpSelect.value;
+      // Same-page contact form? Scroll + prefill. Otherwise go to the contact page.
+      if (document.getElementById("contact-form")) {
+        selectService(svc);
+        goToContact();
+        window.setTimeout(function () {
+          var name = document.getElementById("name");
+          if (name) name.focus();
+        }, prefersReduced ? 0 : 500);
+      } else {
+        window.location.href = "contact.html?service=" + encodeURIComponent(svc);
+      }
     });
   }
 
@@ -400,10 +406,114 @@ var LISTINGS = [
     else { playing = false; syncToggle(); }
   })();
 
+  /* ---------- Investment page calculators (run only if present) ---------- */
+  (function initCalculators() {
+    var mc = document.getElementById("mortgage-calc");
+    var ic = document.getElementById("investment-calc");
+    if (!mc && !ic) return;
+
+    // Read a numeric input; empty/invalid -> 0. Never negative.
+    function n(id) {
+      var el = document.getElementById(id);
+      if (!el) return 0;
+      var v = parseFloat(el.value);
+      if (!isFinite(v) || v < 0) return 0;
+      return v;
+    }
+    function money(v) {
+      if (!isFinite(v)) return "$0";
+      var neg = v < 0;
+      var s = "$" + Math.round(Math.abs(v)).toLocaleString("en-US");
+      return neg ? "-" + s : s;
+    }
+    function pct(v) {
+      if (!isFinite(v)) return "0.00%";
+      return v.toFixed(2) + "%";
+    }
+    function set(id, text, cls) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.textContent = text;
+      if (cls !== undefined) {
+        el.classList.remove("is-neg", "is-pos");
+        if (cls) el.classList.add(cls);
+      }
+    }
+    // Standard amortized monthly principal + interest.
+    function monthlyPayment(loan, annualRatePct, years) {
+      var nMonths = Math.round(years * 12);
+      if (loan <= 0 || nMonths <= 0) return 0;
+      var r = (annualRatePct / 100) / 12;
+      if (r === 0) return loan / nMonths;
+      var pow = Math.pow(1 + r, nMonths);
+      return loan * (r * pow) / (pow - 1);
+    }
+
+    function calcMortgage() {
+      var price = n("mc-price");
+      var downPct = Math.min(n("mc-down"), 100);
+      var rate = n("mc-rate");
+      var term = n("mc-term");
+      var loan = price * (1 - downPct / 100);
+      var pay = monthlyPayment(loan, rate, term);
+      var total = pay * Math.round(term * 12);
+      set("mc-loan", money(loan));
+      set("mc-monthly", money(pay));
+      set("mc-total", money(total));
+    }
+
+    function calcInvestment() {
+      var price = n("ic-price");
+      var downPct = Math.min(n("ic-down"), 100);
+      var rate = n("ic-rate");
+      var term = n("ic-term");
+      var rent = n("ic-rent");
+      var expenses = n("ic-exp");
+
+      var downAmount = price * (downPct / 100);
+      var loan = price - downAmount;
+      var pay = monthlyPayment(loan, rate, term);
+
+      var monthlyCashFlow = rent - expenses - pay;
+      var annualCashFlow = monthlyCashFlow * 12;
+      var annualNOI = (rent - expenses) * 12; // excludes debt service
+      var capRate = price > 0 ? (annualNOI / price) * 100 : 0;
+      var coc = downAmount > 0 ? (annualCashFlow / downAmount) * 100 : 0;
+
+      set("ic-mortgage", money(pay));
+      set("ic-cashflow", money(monthlyCashFlow), monthlyCashFlow < 0 ? "is-neg" : "is-pos");
+      set("ic-caprate", price > 0 ? pct(capRate) : "—");
+      set("ic-coc", downAmount > 0 ? pct(coc) : "—", coc < 0 ? "is-neg" : (coc > 0 ? "is-pos" : ""));
+    }
+
+    if (mc) {
+      mc.addEventListener("input", calcMortgage);
+      calcMortgage();
+    }
+    if (ic) {
+      ic.addEventListener("input", calcInvestment);
+      calcInvestment();
+    }
+  })();
+
   /* ---------- Contact form validation + mailto ---------- */
   var form = document.getElementById("contact-form");
   if (!form) return;
   var status = document.getElementById("form-status");
+
+  /* Preselect the service dropdown from ?service= (set by CTAs on other pages) */
+  (function prefillServiceFromQuery() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var svc = params.get("service");
+      if (!svc) return;
+      var sel = document.getElementById("service");
+      if (!sel) return;
+      for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value === svc) { sel.value = svc; sel.dispatchEvent(new Event("change")); break; }
+      }
+    } catch (e) { /* no-op */ }
+  })();
 
   function setError(name, msg) {
     var field = form.querySelector('[name="' + name + '"]');

@@ -17,18 +17,45 @@ eyebrows, and small highlights. Lots of whitespace and breathing room.
 
 ---
 
+## Pages (multi-page site)
+
+Every page shares the same `styles.css`, `script.js`, header nav, and navy + gold footer,
+and links with **relative** paths (works on GitHub Pages / any static host, or opened directly).
+
+| Page | Purpose |
+|------|---------|
+| `index.html` | Home — hero, four-pillar overview, Why Choose Revive, live rentals (TenantTurner), testimonials, CTA. |
+| `property-management.html` | Full-service PM: screening, rent collection, maintenance, 24/7 response, inspections, renewals, evictions, reporting, HOA, vacation rentals. |
+| `buy-sell.html` | Buyer & seller representation, investment properties, first-time buyers, CMA, home valuation. |
+| `investment.html` | Investment services + **two live calculators** (mortgage and investment/cash-flow), client-side vanilla JS. |
+| `contact.html` | Contact form (validate → `mailto:`), phone/email/address, office hours, and an OpenStreetMap embed. |
+
+The shared nav includes **Owner Login** and **Tenant Login** buttons that open TenantCloud
+in a new tab. The current page is marked `aria-current="page"`.
+
 ## Files
 
 | File | Purpose |
 |------|---------|
-| `index.html` | All page content and structure (semantic HTML). |
-| `styles.css` | Luxury-boutique theme (white + charcoal + orange), layout, animations, responsive rules. |
-| `script.js` | The editable **LISTINGS** array (top of file) plus mobile nav, scroll reveals, counters, hero "How can we help" bar, listings render, testimonials carousel, form validation + `mailto:`. |
+| `*.html` | The five pages above (semantic HTML, shared header/footer). |
+| `styles.css` | Navy + gold luxury-boutique theme, layout, animations, calculators, responsive rules. |
+| `script.js` | The editable **LISTINGS** array (top of file) plus mobile nav, scroll reveals, counters, hero "How can we help" bar, listings render, testimonials carousel, **investment calculators**, `?service=` prefill, and form validation + `mailto:`. |
 | `README.md` | This file. |
 
-Only external dependency: **Google Fonts** (`Cormorant Garamond` + `Manrope`) loaded via `<link>`.
-Everything else — icons, illustrations, charts — is inline SVG / CSS. No external images
-are hotlinked.
+Only external dependencies: **Google Fonts** (`Cormorant Garamond` + `Manrope`) via `<link>`,
+the **TenantTurner** rentals widget (home page), and the **OpenStreetMap** map embed (contact page,
+no API key). Everything else — icons, illustrations — is inline SVG / CSS. No external images are hotlinked.
+
+## Investment calculators
+
+`investment.html` includes two client-side calculators (no libraries, results update live on input):
+
+- **Mortgage** — home price, down payment %, interest rate %, term → monthly principal & interest + total.
+- **Investment / cash-flow** — purchase price, down payment %, rate, term, monthly rent, monthly expenses
+  → monthly mortgage, monthly cash flow, cap rate, cash-on-cash return.
+
+Both handle empty/zero inputs gracefully (no divide-by-zero) and carry an "estimates only, not
+financial advice" disclaimer. The math lives in the guarded `initCalculators()` block in `script.js`.
 
 ---
 
