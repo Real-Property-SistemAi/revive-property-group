@@ -28,23 +28,24 @@ and links with **relative** paths (works on GitHub Pages / any static host, or o
 | `property-management.html` | Full-service PM: screening, rent collection, maintenance, 24/7 response, inspections, renewals, evictions, reporting, HOA, vacation rentals. |
 | `buy-sell.html` | Buyer & seller representation, investment properties, first-time buyers, CMA, home valuation. |
 | `investment.html` | Investment services + **two live calculators** (mortgage and investment/cash-flow), client-side vanilla JS. |
-| `contact.html` | Contact form (validate → `mailto:`), phone/email/address, office hours, and an OpenStreetMap embed. |
+| `retirement.html` | **Retire in Brazil — Florianópolis.** Lifestyle/market page aimed at North American / expat retirees considering retiring abroad. Covers the pros of Florianópolis (cost of living, coastline, quality of life, climate, culture, healthcare access, attainable coastal real estate, expat community), how Revive helps, and a prominent honest disclaimer (not immigration/tax/legal/financial advice). Bridges into a future Florianópolis listings page. CTA prefills the contact form with `?service=Retire in Brazil`. |
+| `contact.html` | Contact form (validate → `mailto:`), phone/email/address, office hours, and an OpenStreetMap embed. Service select includes a **Retire in Brazil (Florianópolis)** option matching the retirement page CTA. |
 | `about.html` | About Us — the Revive story, mission, "what we stand for" values grid, licensing/credentials (Thomas Heath Shewmaker · FL License #SL3279668) + Equal Housing, community blurb, headshot placeholder. |
 | `service-areas.html` | Local SEO hub — intro + grid of city cards, each linking to its own area page. |
 | `clearwater.html`, `st-petersburg.html`, `largo.html`, `seminole.html`, `pinellas-park.html`, `dunedin.html`, `palm-harbor.html`, `safety-harbor.html`, `tampa.html` | Nine city landing pages for local SEO. Each has **genuinely unique** area context (no thin/duplicate copy), a "How Revive helps in [City]" section linking the service pages, and a city-specific CTA. |
 
 The shared nav includes **Owner Login** and **Tenant Login** buttons that open TenantCloud
-in a new tab. Order: Home · Property Management · Buy & Sell · Investment · Rentals ·
-**Service Areas** · **About** · Contact. The current page is marked `aria-current="page"`
+in a new tab. Order: Home · Property Management · Buy & Sell · Investment · **Retirement** ·
+Rentals · **Service Areas** · **About** · Contact. The current page is marked `aria-current="page"`
 (city pages mark **Service Areas** as current). The footer carries a fourth **Service Areas**
-column linking key cities. Nav collapses to a hamburger under **1240px** (raised because the
-menu is longer).
+column linking key cities, and the **Company** column links **Retire in Brazil** (`retirement.html`).
+Nav collapses to a hamburger under **1320px** (raised because the menu is longer).
 
 ## Files
 
 | File | Purpose |
 |------|---------|
-| `*.html` | The 16 pages above (semantic HTML, identical shared header/footer). |
+| `*.html` | The 17 pages above (semantic HTML, identical shared header/footer). |
 | `styles.css` | Navy + gold luxury-boutique theme, layout, animations, calculators, responsive rules. |
 | `script.js` | The editable **LISTINGS** array (top of file) plus mobile nav, scroll reveals, counters, hero "How can we help" bar, listings render, testimonials carousel, **investment calculators**, `?service=` prefill, and form validation + `mailto:`. |
 | `README.md` | This file. |
