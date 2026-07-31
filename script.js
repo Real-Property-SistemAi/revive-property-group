@@ -86,6 +86,8 @@ var LISTINGS = [
   "use strict";
 
   var CONTACT_EMAIL = "heath@buyfloridaestate.com";
+  // Dedicated Formspree form for Florianopolis / Brazil leads (routes to Jucileide, jucipolli@gmail.com).
+  var FLORIANOPOLIS_ENDPOINT = "https://formspree.io/f/mbdnebnl";
   var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------- Current year in footer ---------- */
@@ -573,8 +575,12 @@ var LISTINGS = [
       return;
     }
 
-    // Optional future no-code endpoint (set data-endpoint on the form). No secrets in markup.
+    // No-code endpoint (set data-endpoint on the form). No secrets in markup.
     var endpoint = form.getAttribute("data-endpoint");
+    // Florianopolis / Brazil leads go to their own form (routes to Jucileide).
+    if (data.service === "Florianopolis" && FLORIANOPOLIS_ENDPOINT) {
+      endpoint = FLORIANOPOLIS_ENDPOINT;
+    }
     if (endpoint) {
       submitToEndpoint(endpoint, data);
       return;
@@ -624,8 +630,6 @@ var LISTINGS = [
       _replyto: data.email,
       _subject: "New inquiry: " + data.service + " — " + data.name
     };
-    // Florianopolis / Brazil investment leads: also CC the local partner (Jucileide).
-    if (data.service === "Florianopolis") { payload._cc = "jucipolli@gmail.com"; }
     fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json", "Accept": "application/json" },
