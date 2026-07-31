@@ -594,13 +594,21 @@ var LISTINGS = [
       "Message:",
       data.message
     ];
-    var href = "mailto:" + CONTACT_EMAIL +
+    // Route Florianopolis / Brazil investment leads to the local partner (Jucileide), CC Heath.
+    var recipient = CONTACT_EMAIL;
+    var ccPart = "";
+    if (data.service === "Florianopolis") {
+      recipient = "jucipolli@gmail.com";
+      ccPart = "&cc=" + encodeURIComponent(CONTACT_EMAIL);
+    }
+    var href = "mailto:" + recipient +
       "?subject=" + encodeURIComponent(subject) +
+      ccPart +
       "&body=" + encodeURIComponent(lines.join("\n"));
 
     window.location.href = href;
     if (status) {
-      status.textContent = "Opening your email app to send… If nothing happens, email " + CONTACT_EMAIL + " directly.";
+      status.textContent = "Opening your email app to send… If nothing happens, email " + recipient + " directly.";
       status.className = "form-note ok";
     }
   }
