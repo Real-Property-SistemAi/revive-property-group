@@ -615,10 +615,21 @@ var LISTINGS = [
 
   function submitToEndpoint(endpoint, data) {
     if (status) { status.textContent = "Sending…"; status.className = "form-note"; }
+    var payload = {
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      service: data.service,
+      message: data.message,
+      _replyto: data.email,
+      _subject: "New inquiry: " + data.service + " — " + data.name
+    };
+    // Florianopolis / Brazil investment leads: also CC the local partner (Jucileide).
+    if (data.service === "Florianopolis") { payload._cc = "jucipolli@gmail.com"; }
     fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify(data)
+      body: JSON.stringify(payload)
     })
       .then(function (res) {
         if (!res.ok) throw new Error("Request failed");
