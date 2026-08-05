@@ -271,6 +271,25 @@ var LISTINGS = [
     grid.innerHTML = html;
   })();
 
+  /* ---------- Retire-abroad savings calculator ---------- */
+  (function initRetireCalc() {
+    var input = document.getElementById("us-spend");
+    if (!input) return;
+    var outFloripa = document.getElementById("rc-floripa");
+    var outMonthly = document.getElementById("rc-monthly-save");
+    var outAnnual = document.getElementById("rc-annual-save");
+    var RATIO = 0.46; // Florianopolis cost ~= 46% of the US equivalent (Numbeo, 2026)
+    function fmt(n) { return "$" + Math.round(n).toLocaleString("en-US"); }
+    function calc() {
+      var us = parseFloat(input.value) || 0;
+      if (outFloripa) outFloripa.textContent = us > 0 ? fmt(us * RATIO) : "—";
+      if (outMonthly) outMonthly.textContent = us > 0 ? fmt(us * (1 - RATIO)) : "—";
+      if (outAnnual)  outAnnual.textContent  = us > 0 ? fmt(us * (1 - RATIO) * 12) : "—";
+    }
+    input.addEventListener("input", calc);
+    calc();
+  })();
+
   /* ---------- Shared helper: preselect service + scroll to contact ---------- */
   var serviceSelect = document.getElementById("service");
   function selectService(val) {
