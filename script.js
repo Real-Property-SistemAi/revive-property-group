@@ -290,6 +290,19 @@ var LISTINGS = [
     calc();
   })();
 
+  /* ---------- First-30-days checklist: remember checked items ---------- */
+  (function initChecklist() {
+    var boxes = document.querySelectorAll(".fc-box");
+    if (!boxes.length) return;
+    Array.prototype.forEach.call(boxes, function (b) {
+      var key = "floripa-check-" + b.id;
+      try { if (localStorage.getItem(key) === "1") b.checked = true; } catch (e) {}
+      b.addEventListener("change", function () {
+        try { localStorage.setItem(key, b.checked ? "1" : "0"); } catch (e) {}
+      });
+    });
+  })();
+
   /* ---------- Shared helper: preselect service + scroll to contact ---------- */
   var serviceSelect = document.getElementById("service");
   function selectService(val) {
